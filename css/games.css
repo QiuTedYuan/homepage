@@ -1,0 +1,35 @@
+img {
+    max-width:100%
+}
+
+.intro {
+    margin-top:100px;
+    border-bottom:1px solid #dbdbdb;
+    padding-bottom:20px;
+    margin-bottom:20px;
+}
+
+.intro h2 {
+    font-family:impact;
+    font-size:40px;
+}
+
+.intro p {
+    font-size:25px;
+}
+
+.photos {
+    margin-top:20px;
+}
+
+.photos .thumbnail {
+    background-color:#88bedf;
+}
+
+.photos h2 {
+    margin-bottom:20px;
+}
+
+#home {
+    margin-bottom:20px;
+}

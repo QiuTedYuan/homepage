@@ -1,0 +1,135 @@
+body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #555;
+    background-color: #e9f0f5;    
+}
+
+/* nav bar at the top*/
+.blog-masthead {
+    background-color:#428bca;
+    -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+    box-shadow:inset 0 -2px 5px rgba(0,0,0,.1);
+}
+
+#blog-nav-heading {
+    position:relative;
+    padding:10px;
+    display:inline-block;
+    font-family: Verdana;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+.blog-nav-item {
+    position:relative;
+    padding:10px;
+    display:inline-block;
+    font-weight: 500;
+    color: #cdddeb;
+}
+
+.blog-nav-item:hover, .blog-nav-item:focus {
+    color:#fff;
+    text-decoration:none;
+}
+
+.blog-nav .active {
+    color: #fff;
+}
+
+/* jumbotron */
+.jumbotron {
+    height:500px;
+    background-image:url('../images/hkust.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+
+.jumbotron .container {
+    position:relative;
+    top:70px;
+
+}
+
+.jumbotron h1 {
+    color: #AFF;
+    font-family:Courier, sans-serif;
+}
+
+.jumbotron p {
+    color: #000099;
+    font-family:cursive, serif;
+}
+
+/* content */
+.brief-intro {
+    padding-bottom: 100px;
+    border-bottom: 1px solid #bbb;
+}	
+
+.brief-intro h2 {
+    text-align:center;
+}
+
+.brief-intro p {
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.brief-intro  p > a {
+    color:#000099;
+    border-bottom: 1px dotted #bbb;
+}
+
+.brief-intro p > a:hover {
+    border-bottom: 1px solid #bbb;
+    text-decoration:none;
+}
+
+.brief-intro li {
+    font-size:18px;
+    list-style-type:none;
+    text-align:center;
+}
+
+.brief-intro li:first-child {
+    position:relative;
+    right:100px;
+}
+
+.brief-intro li:nth-child(3) {
+    position:relative;
+    left:100px;
+}
+
+
+.brief-intro  li > a {
+    color:#000099;
+    border-bottom: 1px dotted #bbb;
+}
+
+.brief-intro li > a:hover {
+    border-bottom: 1px solid #bbb;
+    text-decoration:none;
+}
+
+
+/*button*/
+.button {
+    width:140px;
+    margin-bottom:10px;
+    padding: 10px 20px;
+    text-align:center;
+    border-radius:30px;
+    border:1px solid #5a5a5a;
+    text-decoration:none;
+    font-size:20px;
+}
+
+.button:hover {
+    color:#00a0cd;
+    text-decoration:none;
+    background-color:#efefef;
+}
