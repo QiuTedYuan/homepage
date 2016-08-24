@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Singe View Modeling</title>
+    
+  </head>
+  
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+	<div class="blog-nav">
+	  <div class="pull-left">
+	    <a class="blog-nav-item" href="../../">Home</a>
+	    <a class="blog-nav-item" href="../index.html">Computer Vision</a>
+	  </div>
+	  <div class="pull-right">
+	    <p id="blog-nav-heading">Project list</p>
+	    <a class="blog-nav-item" href="../iscissors/index.html">Intelligent Scissors</a>
+	    <a class="blog-nav-item" href="../face/index.html">Face Detection</a>
+	    <a class="blog-nav-item active" href="">Single View Modeling</a>
+	    <a class="blog-nav-item" href="../photo/index.html">Multi-view Modeling</a>
+	  </div>
+	</div>
+      </div>
+    </div>
+  
+    <div class="jumbotron">
+      <div class="container">
+	<h1>Single View Modeling</h1>
+	<p>Instructor:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	  <a href="http://www.cs.ust.hk/~cktang/bio-sketch-review.htm">Chi Keung Tang</a>
+	</p>
+	<p>Course Webpage:&nbsp
+	  <a href="https://course.cs.ust.hk/comp5421/Password_Only/projects/svm/index.html">Computer Vision</a>
+	</p>
+	<p>Team:
+	  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	  Qiu Yuan<br/>
+	  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	  Yu Xinyuan
+	</p>
+      </div>
+    </div>
+
+    <div class="brief-intro">
+      <div class="container">
+	<div class="row">
+	  <div class="col-md-8">
+	    <h2>Introduction</h2>
+	    <p>Create 3D models from a single image using:</p>
+	    <ul>
+	      <li>Projective Geometry</li>
+	      <li>Single View Modeling</li>
+	    </ul>
+	    <br /><br /><br />
+	    <div class="caption">
+	      <p>Input image: IAS building -> </p>
+	    </div>
+	  </div>
+	  <div class="col-md-4">
+	    <img src="./img/ias.jpg" />
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+	<div class="row">
+	  <h2>Example:</h2>
+	  <br /><br/>
+	      
+	  <div class="col-md-4">
+	    <img src="./img/original.png" />
+	    <p>Original Image</p>
+	  </div>
+	  <div class="col-md-4">
+	    <img src="./img/vanish.png" />
+	    <p>Calculating vanishing points and Homography</p>
+	  </div>
+	  <div class="col-md-4">
+	    <img src="./img/poly.png" />
+	    <p>Polygon Faces on the image</p>
+	  </div>
+	</div>
+	<br /><br />
+	<div class="row">
+	  <h2>Resulting textures:</h2>
+	  <br /><br/>
+
+	  <div class="col-md-6">
+	    <img src="./img/a_shape_front.gif" />
+	    <p>The texture for the A</p>
+	  </div>
+	  <div class="col-md-6">
+	    <img src="./img/I_shape_front.gif" />
+	    <p>The texture for the I</p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-4">
+	    <img src="./img/ias_cube.0.gif" />
+	    <p>The texture for front face</p>
+	  </div>
+	  <div class="col-md-4">
+	    <img src="./img/ias_cube.3.gif" />
+	    <p>The texture for right face</p>
+	  </div>
+	  <div class="col-md-4">
+	    <img src="./img/ias_cube.5.gif" />
+	    <p>The texture for top face</p>
+	  </div>
+	</div>
+	<div class="row">
+	  <h2>Screenshots for the result 3D model</h2>
+	  <p>The wrl file is available <a href="./img/artifact.wrl">here</a>.</p>
+	  <br /><br/>
+
+	  <div class="col-md-6">
+	    <img src="./img/result_front.png" />
+	    <p>The result model</p>
+	  </div>
+	  <div class="col-md-6">
+	    <img src="./img/result_back.png" />
+	    <p>The result model</p>
+	    <div class="pull-right">
+	      <br /><br />
+	      <a href="../../index.html" class="button">Home</a>
+	    </div>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+
+  </body>  
+
+</html>

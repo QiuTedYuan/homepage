@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Multiple View Modeling</title>
+    
+  </head>
+  
+  <body>
+      <div class="blog-masthead">
+      <div class="container">
+	<div class="blog-nav">
+	  <div class="pull-left">
+	    <a class="blog-nav-item" href="../../">Home</a>
+	    <a class="blog-nav-item" href="../index.html">Computer Vision</a>
+	  </div>
+	  <div class="pull-right">
+	    <p id="blog-nav-heading">Project list</p>
+	    <a class="blog-nav-item" href="../iscissors/index.html">Intelligent Scissors</a>
+	    <a class="blog-nav-item" href="../face/index.html">Face Detection</a>
+	    <a class="blog-nav-item" href="../svm/index.html">Single View Modeling</a>
+	    <a class="blog-nav-item active" href="">Multi-view Modeling</a>
+	  </div>
+	</div>
+      </div>
+    </div>
+    
+    <div class="jumbotron">
+      <div class="container">
+	<h1>Multiple View Modeling</h1>
+	<p>Instructor:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	  <a href="http://www.cs.ust.hk/~cktang/bio-sketch-review.htm">Chi Keung Tang</a>
+	</p>
+	<p>Course Webpage:&nbsp
+	  <a href="https://course.cs.ust.hk/comp5421/Password_Only/projects/photo/index.html">Computer Vision</a>
+	</p>
+	<p>Team:
+	  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	  Qiu Yuan<br/>
+	  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	</p>
+      </div>
+    </div>
+
+    <div class="brief-intro">
+      <div class="container">
+	<div class="row">
+	  <div class="col-md-8">
+	    <h2>Introduction</h2>
+	    <p>Create 3D models from multiple images using:</p>
+	    <ul>
+	      <li>Initial normal estimation</li>
+	      <li>Normal refinement by MRF using graph cuts</li>
+	      <li>Depth reconstruction by shape-from-shapelets</li>
+	    </ul>
+	    <br /><br /><br />
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="container">
+	<div class="row">
+	  <h2>Example: data04</h2>
+	  <br /><br/>
+	      
+	  <div class="col-md-6">
+	    <img src="./img/init_norm.bmp" />
+	    <p>initial normal</p>
+	  </div>
+	  <div class="col-md-6">
+	    <img src="./img/ref_norm.bmp" />
+	    <p>refined normal</p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-12">
+	    <img src="./img/solution.bmp" />
+	    <p>result</p>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+  </body>  
+
+</html>

@@ -1,0 +1,177 @@
+<html>
+<head>
+  <title>Face Detection Project</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<link href='http://fonts.googleapis.com/css?family=Nunito:300|Crimson+Text|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" title="Default" href="styles/github.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+
+<link rel="stylesheet" href="highlighting/styles/default.css">
+
+<script src="highlighting/highlight.pack.js"></script>
+
+<link rel="stylesheet" href="main.css">
+
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+<body>
+      <div class="blog-masthead">
+      <div class="container">
+	<div class="blog-nav">
+	  <div class="pull-left">
+	    <a class="blog-nav-item" href="../../">Home</a>
+	    <a class="blog-nav-item" href="../index.html">Computer Vision</a>
+	  </div>
+	  <div class="pull-right">
+	    <p id="blog-nav-heading">Project list</p>
+	    <a class="blog-nav-item" href="../iscissors/index.html">Intelligent Scissors</a>
+	    <a class="blog-nav-item active" href="">Face Detection</a>
+	    <a class="blog-nav-item" href="../svm/index.html">Single View Modeling</a>
+	    <a class="blog-nav-item" href="../photo/index.html">Multi-view Modeling</a>
+	  </div>
+	</div>
+      </div>
+    </div>
+      
+<div class="container">
+
+<h2>COMP5421 / Project 2 / Face Detection with a Sliding Window</h2>
+
+<div style="float: right; padding: 20px">
+<img style="max-width: 500px" src="img/14.jpg" />
+<p style="font-size: 14px">An example of detection</p>
+</div>
+
+<h3>Overview</h2>
+<p>The sliding window model is conceptually simple: independently classify all image patches as being object or non-object. Sliding window classification is the dominant paradigm in object detection and for one object category in particular -- faces -- it is one of the most noticeable successes of computer vision. For example, modern cameras and photo organization tools have prominent face detection capabilities. These success of face detection (and object detection in general) can be traced back to influential works such as Rowley et al. 1998 and Viola-Jones 2001. You can look at these papers for suggestions on how to implement your detector. However, for this project you will be implementing the simpler (but still very effective!) sliding window detector of Dalal and Triggs 2005. Dalal-Triggs focuses on representation more than learning and introduces the SIFT-like Histogram of Gradients (HoG) representation (pictured to the right). You will not be asked to implement HoG. You will be responsible for the rest of the detection pipeline, though -- handling heterogeneous training and testing data, training a linear classifier (a HoG template), and using your classifier to classify millions of sliding windows at multiple scales. Fortunately, linear classifiers are compact, fast to train, and fast to execute. A linear SVM can also be trained on large amounts of data, including mined hard negatives.</p>
+
+For our project, we mainly adjusts the following parameters:
+
+<ol>
+<li>Random negative samples.</li>
+<li>The number of negative images.</li>
+<li>The value for lambda.</li>
+<li>The size of rescaling for each image.</li>
+<li>The threshold size</li>
+</ol>
+
+<div style="clear:both">
+
+<h3>Random negative samples</h3>
+For each image, we generate two lists of random numbers, and let them indicate the sample negtive image.<p>
+<pre><code>
+%get_random_negative_features.m
+for i=1:num_images
+    img=imread(fullfile(non_face_scn_path,image_files(i).name));
+    [hei,wid]=size(img);
+    tmp = feature_params.template_size;
+    sample_index = rand (sample_per_image, 2);
+    for j=1:sample_per_image
+        sample_x = ceil(sample_index(j,1)*(wid-tmp));
+        sample_y = ceil(sample_index(j,2)*(hei-tmp));
+        sample_img = img(sample_y:sample_y+tmp-1,sample_x:sample_x+tmp-1);
+        hog=vl_hog(im2single(sample_img),feature_params.hog_cell_size);
+        features_neg((i-1)*sample_per_image+j,:)=reshape(hog,1,D);
+    end
+end
+</code></pre>
+
+<h3>Number of negative images</h3>
+<p>We change it to 20000 to reduce the number of false positives. But if it exceeds 20000, the true positives and true negatives will not be proportional for the trainning data.</p>
+
+<h3>The value for lambda</h3>
+<p>We start at 0.0001 and found that even if we change it to 0.00001, there is not great improvement. also 0.0002 is not as good as 0.0001.</p>
+
+<h3>The size of rescaling</h3>
+<p>Originally, the scale_step is set to be 0.1, so that the image will be rescaled to 1, 0.9, 0.8, ..., 0.1 of its original size. but after that we found 0.05 works better.</p>
+<pre><code>
+ scale_step=0.05;
+ for scale=1:-scale_step:scale_step
+    current_img = imresize(img,scale);
+    ...
+ end
+</code></pre>
+
+<h3>The threshold value</h3>
+<p>This value seems to have the most effect on the result. We tried many values, from 0.7 to 0.99. The larger the value, the less images will be classified as faces, including both true faces and false detections. By trial and error, the final value is set to be 0.9.
+
+<h3>Results in a table</h3>
+<p>The program works the best when the faces are positively orientated. It also works for some symbolic faces.</p>
+    
+<table border=1>
+<tr>
+<td>
+<img src="img/2.jpg" width="24%"/>
+<img src="img/3.jpg" width="24%"/>
+<img src="img/4.jpg" width="24%"/>
+<img src="img/5.jpg" width="24%"/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="img/6.jpg" width="24%"/>
+<img src="img/7.jpg"  width="24%"/>
+<img src="img/8.jpg" width="24%"/>
+<img src="img/9.jpg" width="24%"/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="img/10.jpg" width="24%"/>
+<img src="img/11.jpg"  width="24%"/>
+<img src="img/12.jpg" width="24%"/>
+<img src="img/13.jpg" width="24%"/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="img/class_easy.jpg" width="24%"/>
+<img src="img/class_hard.jpg"  width="24%"/>
+<img src="img/easy_01.jpg" width="24%"/>
+<img src="img/easy_02.jpg" width="24%"/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="img/hard_01.jpg" width="24%"/>
+<img src="img/hard_03.jpg"  width="24%"/>
+<img src="img/faculty.jpg" width="48%"/>
+</td>
+</tr>
+
+</table>
+
+<center>
+<p>
+This is the HoG visualization of our code. The boundary looks like a face.
+<p>
+<img src="img/hog.jpg">
+<p>
+Precision Recall curve with an average precision 0.804.
+<p>
+<img src="img/average_precision.jpg">
+<p>
+Decection on the first image Argentina.jpg is perfectly matched.
+<img src="img/figure 15.jpg">
+<p>
+Viola Jones</p>
+<img src="img/figure 13.jpg">
+<p>
+SVM</p>
+<img src="img/figure 2.jpg">
+
+</center>
+
+<div style="clear:both" >
+
+</div>
+</body>
+</html>
